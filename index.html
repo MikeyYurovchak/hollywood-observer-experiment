@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Daily Hollywood Disaster | Pasta Panic!</title>
+<style>
+  :root { --red:#d71920; --yellow:#ffe33b; --ink:#171717; --paper:#fffdf5; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#dedbd2; color:var(--ink); font-family:Georgia,"Times New Roman",serif; }
+  .page { max-width:1050px; margin:24px auto; padding:clamp(14px,3vw,34px); background:var(--paper); border:1px solid #bbb; box-shadow:0 10px 35px #0002; }
+  .topline { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; border-bottom:3px solid var(--ink); padding-bottom:8px; font:700 11px/1.3 Arial,sans-serif; letter-spacing:1.4px; text-transform:uppercase; }
+  .masthead { text-align:center; padding:14px 0 6px; }
+  .masthead .kicker { font:900 14px Arial,sans-serif; letter-spacing:5px; }
+  .masthead h1 { margin:0; font:1000 clamp(44px,9vw,94px)/.88 Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; letter-spacing:-3px; text-transform:uppercase; }
+  .masthead h1 span { color:var(--red); }
+  .tagline { display:inline-block; margin-top:12px; padding:6px 14px; background:var(--ink); color:white; font:900 12px Arial,sans-serif; letter-spacing:2px; transform:rotate(-1deg); }
+  .breaking { margin:15px 0 12px; background:var(--red); color:white; padding:8px 12px; font:900 14px Arial,sans-serif; letter-spacing:2px; text-align:center; }
+  .headline { background:var(--yellow); border:4px solid var(--ink); padding:15px 16px 12px; text-align:center; transform:rotate(-.3deg); }
+  .headline .overline { font:900 14px Arial,sans-serif; letter-spacing:3px; }
+  .headline h2 { margin:7px 0; font:1000 clamp(35px,7.7vw,77px)/.9 Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; text-transform:uppercase; letter-spacing:-1.6px; }
+  .headline h2 em { color:var(--red); font-style:normal; text-shadow:2px 2px 0 var(--ink); }
+  .headline p { margin:9px 0 0; font:900 clamp(13px,2vw,18px)/1.2 Arial,sans-serif; text-transform:uppercase; }
+  .byline { margin:16px 0; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font:700 11px Arial,sans-serif; text-transform:uppercase; border-bottom:1px solid #999; padding-bottom:9px; }
+  .fiction { background:#fff0f0; border:2px dashed var(--red); padding:9px 12px; margin:12px 0 18px; text-align:center; color:#8c0000; font:900 11px/1.4 Arial,sans-serif; letter-spacing:.7px; }
+  .grid { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(230px,1fr); gap:22px; }
+  .hero-art { position:relative; min-height:255px; overflow:hidden; border:3px solid var(--ink); background:radial-gradient(circle at 70% 20%, #fff7a3 0 8%, transparent 9%), repeating-linear-gradient(135deg,#ffec60 0 14px,#f8d62b 14px 28px); display:flex; align-items:center; justify-content:center; }
+  .hero-art .cart { font-size:clamp(80px,14vw,150px); filter:drop-shadow(4px 5px 0 #0004); transform:rotate(-12deg); }
+  .hero-art .noodles { position:absolute; font-size:clamp(32px,5vw,56px); transform:rotate(25deg); top:14px; left:12px; }
+  .hero-art .starburst { position:absolute; right:12px; top:16px; background:var(--red); color:white; border:3px solid white; outline:2px solid var(--ink); padding:12px 10px; width:100px; height:100px; clip-path:polygon(50% 0%,61% 20%,82% 7%,80% 30%,100% 38%,83% 52%,98% 72%,73% 73%,68% 100%,49% 82%,30% 100%,28% 76%,3% 80%,17% 58%,0 42%,23% 31%,17% 9%,40% 20%); display:grid; place-items:center; text-align:center; font:1000 15px/1 Arial,sans-serif; transform:rotate(9deg); }
+  .hero-art .caption { position:absolute; bottom:0; left:0; right:0; padding:9px; background:#171717eF; color:white; font:900 12px Arial,sans-serif; text-align:center; letter-spacing:1px; }
+  .article h3 { font:1000 27px/1 Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; text-transform:uppercase; margin:20px 0 7px; }
+  .article p { font-size:17px; line-height:1.55; margin:0 0 13px; }
+  .article .lead:first-letter { float:left; font:900 60px/.8 Georgia,serif; padding:6px 7px 0 0; color:var(--red); }
+  .pullquote { margin:17px 0; padding:12px 14px; background:var(--ink); color:var(--yellow); font:1000 23px/1.1 Impact, Haettenschweiler, sans-serif; text-transform:uppercase; border-left:8px solid var(--red); }
+  .sidebar { border-left:2px solid var(--ink); padding-left:17px; }
+  .sidebar .box { border:3px solid var(--ink); margin-bottom:17px; }
+  .box-title { background:var(--red); color:white; font:1000 18px Impact, Haettenschweiler, sans-serif; letter-spacing:1px; text-align:center; padding:8px; text-transform:uppercase; }
+  .box-body { padding:11px; }
+  .box-body p, .box-body li { font-size:14px; line-height:1.45; }
+  .box-body ul { padding-left:18px; margin:7px 0; }
+  .quote { font:900 21px/1.15 Impact, Haettenschweiler, sans-serif; text-transform:uppercase; }
+  .quote small { display:block; font:700 10px Arial,sans-serif; margin-top:9px; letter-spacing:1px; }
+  .mini-banner { background:var(--yellow); border:2px solid var(--ink); padding:9px; text-align:center; font:1000 20px/1 Impact, Haettenschweiler, sans-serif; text-transform:uppercase; transform:rotate(1deg); margin:16px 0; }
+  .footer { margin-top:20px; padding-top:10px; border-top:4px double var(--ink); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font:700 10px/1.4 Arial,sans-serif; text-transform:uppercase; }
+  .fineprint { margin-top:12px; font:italic 11px/1.4 Arial,sans-serif; color:#555; }
+  @media (max-width:700px) { .grid { grid-template-columns:1fr; } .sidebar { border-left:0; border-top:3px solid var(--ink); padding:16px 0 0; } .hero-art { min-height:220px; } .masthead h1 { letter-spacing:-1px; } }
+  @media print { body { background:white; } .page { margin:0; box-shadow:none; border:0; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topline"><span>Special Scandal Edition</span><span>Hollywood • Campus Chaos • Pasta Watch</span><span>100% Fictional Satire</span></div>
+  <header class="masthead">
+    <div class="kicker">THE WORLD'S MOST QUESTIONABLE SOURCE</div>
+    <h1>THE DAILY <span>HOLLYWOOD</span><br>DISASTER</h1>
+    <div class="tagline">IF IT SOUNDS ABSURD, WE PRINT IT BIGGER!</div>
+  </header>
+  <div class="breaking">🚨 BREAKING: NOODLES, NEAR-MISSES & A VERY CONFUSED MOVIE STAR 🚨</div>
+  <section class="headline">
+    <div class="overline">EXCLUSIVE • COMPLETELY MADE UP • EXTRA SAUCY</div>
+    <h2>PROFESSOR ALMOST <em>PASTA-FIES</em><br>JOHN CUSACK!</h2>
+    <p>“I THOUGHT HE WAS A PROP!” — A CAMPUS SPAGHETTI CATASTROPHE FOR THE AGES</p>
+  </section>
+  <div class="byline"><span>By The Daily Hollywood Disaster Staff</span><span>Campus Edition | The Linguine Files</span></div>
+  <div class="fiction">⚠ FICTIONAL TABLOID STORY — THIS IS SATIRE. NONE OF THE EVENTS OR QUOTES BELOW ARE REAL. ⚠</div>
+
+  <div class="grid">
+    <article class="article">
+      <div class="hero-art" role="img" aria-label="Cartoon-style emoji illustration of a runaway shopping cart and spaghetti">
+        <div class="noodles">🍝 💥 🧀</div><div class="cart">🛒</div>
+        <div class="starburst">PASTA<br>PANIC!</div>
+        <div class="caption">THE CART HAD NO BRAKES. THE SPAGHETTI HAD NO MERCY.</div>
+      </div>
+      <h3>THE PASTA THAT ALMOST ENDED A CAREER!</h3>
+      <p class="lead">Hollywood has seen its fair share of scandals, explosions, and questionable haircuts, but nothing could have prepared the world for the afternoon Professor EJ Néel nearly sent legendary actor John Cusack to the great movie premiere in the sky!</p>
+      <p>In this entirely fictional chain of events, an innocent afternoon allegedly spiraled into a cinematic catastrophe involving a rogue shopping cart, 47 pounds of spaghetti, a malfunctioning fog machine, and one extremely confused Hollywood superstar.</p>
+      <p>And it all started with a simple misunderstanding.</p>
+      <p>According to a completely imaginary eyewitness who claims to have been hiding inside a vending machine, Cusack had arrived on campus to discuss the finer points of acting when Professor Néel made what may go down in history as the worst decision since someone invented the self-checkout machine.</p>
+      <div class="pullquote">“THAT'S NOT HOW PHYSICS WORKS!”</div>
+      <p>The professor was reportedly demonstrating the laws of motion by launching a shopping cart down a hallway. Unfortunately, the cart had experimental roller-skate wheels and was carrying 47 pounds of slippery pasta.</p>
+      <p><strong>Its destination?</strong> A table directly in front of John Cusack.<br><strong>Its speed?</strong> Approximately 900 miles per hour, according to a calculator that was immediately confiscated.<br><strong>Its brakes?</strong> One rubber band and a prayer.</p>
+
+      <h3>CUSACK: ONE MEATBALL FROM DISASTER!</h3>
+      <p>Witnesses described the scene as “like <em>Speed</em>, except with more carbohydrates and significantly less budget.” Cusack, reportedly holding a coffee and contemplating independent cinema, looked up just in time to see the oncoming pasta-powered death machine.</p>
+      <p>“Is this part of the movie?” he allegedly asked.</p>
+      <p><strong>IT WAS NOT.</strong></p>
+      <p>In a desperate attempt to stop the cart, Professor Néel grabbed a nearby fire extinguisher. Unfortunately, it was not a fire extinguisher. It was a leaf blower someone had painted red.</p>
+      <p>A hurricane of spaghetti blasted through the hallway. Meatballs ricocheted off lockers. Parmesan filled the air like a blizzard. One undergraduate was reportedly propelled backward into a recycling bin, where he remained for eleven minutes before emerging with a newfound appreciation for organic chemistry.</p>
+      <p>And John Cusack? He was launched backward onto a conveniently placed inflatable dinosaur, which bounced him through double doors and into a pile of beanbags.</p>
+      <p><strong>The actor was alive. His coffee was not.</strong></p>
+
+      <h3>“I'VE BEEN IN WEIRD MOVIES, BUT THIS IS RIDICULOUS!”</h3>
+      <p>After narrowly surviving the incident, Cusack reportedly stood up, brushed three pounds of linguine off his jacket, and stared at Professor Néel in disbelief.</p>
+      <p>“I've been in <em>1408</em>. I've been in <em>Con Air</em>. I've even been in <em>Being John Malkovich</em>,” the fictional actor reportedly declared. “But I've never been attacked by a carbohydrate before!”</p>
+      <p>The professor allegedly attempted to explain the situation using a whiteboard, three equations, and a drawing of a potato.</p>
+      <p>“It was a controlled experiment!” Néel reportedly insisted.</p>
+      <p>“THEN WHY IS THERE A MEATBALL IN MY SHOE?” Cusack allegedly replied.</p>
+      <p>An emergency response team arrived, consisting of two theater majors, a confused cafeteria worker, and a campus tour guide who had mistaken the incident for an extracurricular activity. They attempted CPR on Cusack's ruined coffee.</p>
+      <p>It did not survive.</p>
+
+      <h3>THE COVER-UP: PROJECT AL DENTE?</h3>
+      <p>Just when investigators believed the scandal couldn't become more ridiculous, they allegedly discovered a folder in the professor's office labeled <strong>PROJECT AL DENTE</strong>.</p>
+      <p>Inside were 37 pages of handwritten equations, a picture of a shopping cart wearing sunglasses, and a sticky note reading: <strong>“IF CUSACK ASKS QUESTIONS, DISTRACT HIM WITH GARLIC BREAD.”</strong></p>
+      <p>Coincidence? We think NOT!</p>
+      <p>Was this an innocent scientific demonstration gone wrong? An elaborate film stunt? Or was Professor Néel secretly attempting to create the world's first pasta-powered transportation system?</p>
+      <p>When asked for comment, the professor allegedly responded, “I can explain everything.” She then tripped over the leaf blower.</p>
+      <p>Investigators are also examining reports that the shopping cart may have been operating under the influence of extra-virgin olive oil.</p>
+
+      <h3>HOLLYWOOD'S STRANGEST SURVIVOR SPEAKS!</h3>
+      <p>In the days following the imaginary incident, Cusack reportedly vowed never to visit a university again unless the cafeteria agreed to serve meals in bowls made of reinforced steel.</p>
+      <p>“I thought the biggest threat to my life would be a bad movie review,” he allegedly said. “I never imagined I'd be taken out by Italian cuisine.”</p>
+      <p>Meanwhile, Professor Néel has supposedly been banned from operating shopping carts, leaf blowers, and any object with wheels until further notice.</p>
+      <div class="mini-banner">PASTA LA VISTA, BABY!</div>
+      <p>The cafeteria has introduced a new menu item in honor of the imaginary incident: <strong>The Cusack Calamity Combo</strong>, featuring spaghetti, meatballs, garlic bread, and a complimentary liability waiver.</p>
+      <h3>FINAL VERDICT: ONE MEATBALL FROM HISTORY!</h3>
+      <p>As this fictional scandal continues to rock the imaginary entertainment world, one question remains unanswered: <strong>How close did John Cusack come to becoming the first Hollywood star ever defeated by a bowl of spaghetti?</strong></p>
+      <p>Experts say the answer is simple: one meatball, two roller skates, and approximately three seconds of poor decision-making.</p>
+      <p>Cusack has allegedly installed a personal pasta-detection system in his home. And somewhere in a university hallway, a shopping cart is still rolling.</p>
+    </article>
+
+    <aside class="sidebar">
+      <div class="box">
+        <div class="box-title">THE QUOTE OF THE CENTURY</div>
+        <div class="box-body quote">“I'VE NEVER BEEN ATTACKED BY A CARBOHYDRATE BEFORE!”<small>— JOHN CUSACK, IN THIS TOTALLY FICTIONAL STORY</small></div>
+      </div>
+      <div class="box">
+        <div class="box-title">THE ALLEGED CRIME SCENE</div>
+        <div class="box-body">
+          <ul>
+            <li>47 pounds of spaghetti</li>
+            <li>One suspicious shopping cart</li>
+            <li>Roller-skate wheels (WHY?)</li>
+            <li>A red-painted leaf blower</li>
+            <li>One tragically lost coffee</li>
+            <li>An inflatable dinosaur witness</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-title">EXPERTS ARE BAFFLED</div>
+        <div class="box-body">
+          <p><strong>THEORIES UNDER INVESTIGATION:</strong></p>
+          <p>🍝 Pasta propulsion<br>🛒 Cart-based chaos<br>🧀 Parmesan weather event<br>🦖 Dinosaur-assisted escape</p>
+          <p>One imaginary scientist described the case as “a terrible day for Newton and a tremendous day for marinara.”</p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-title">CAMPUS ALERT!</div>
+        <div class="box-body">
+          <p class="quote">KEEP YOUR PASTA CLOSE. YOUR SHOPPING CART CLOSER.</p>
+          <p>Students are advised to remain calm, avoid unlicensed noodle experiments, and never trust a cart with suspiciously aerodynamic wheels.</p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-title">WHAT HAPPENS NEXT?</div>
+        <div class="box-body">
+          <p>Will Professor Néel return to the lab? Will Cusack ever eat spaghetti again? Is the cart still at large?</p>
+          <p><strong>THIS TABLOID WILL NOT INVESTIGATE ANY OF THESE QUESTIONS.</strong></p>
+        </div>
+      </div>
+      <div class="mini-banner">EXTRA! EXTRA! SAUCE EVERYWHERE!</div>
+    </aside>
+  </div>
+  <footer class="footer">
+    <span>The Daily Hollywood Disaster</span><span>All scandals served al dente</span><span>Not actual news</span>
+  </footer>
+  <p class="fineprint">Disclaimer: This page is a fictional satirical class project. The events, quotations, witnesses, investigation, and allegations described here are invented and are not claims about real events involving Professor EJ Néel or John Cusack.</p>
+</main>
+</body>
+</html>
